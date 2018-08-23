@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE STAMMBAUM SYSTEM "Stamm.dtd">
+
+<STAMMBAUM>
+
+<P Sx="m" ID="20001" FId="20002">
+ <PN>George V</PN>
+ <PN>Frederick</PN>
+ <PN>Ernest</PN>
+ <PN>Albert</PN>
+ <FN>Saxe-Coburg-Gotha</FN>
+ <FN>Windsor</FN>
+ <Coord type="birth" y="1865"/>
+ <Coord type="death" y="1936" m="1" d="20" />
+ <Coord type="img">r1.jpg</Coord>
+ <Link ID="20003" type="marry" y="1893" />
+ <Txt>Ruled as King over Britain and Ireland 1910 - 1936</Txt>
+ <Src nr="">www.infoplease.com</Src>
+</P>
+
+<P Sx="m" ID="20002" MId="20022">
+ <PN>Edward VII</PN>
+ <Coord type="birth" y="1841" m="11" d="9" />
+ <Coord type="death" y="1910" m="5" d="6" />
+ <Coord type="img">r2.jpg</Coord>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20003">
+ <FN>Teck</FN>
+ <PN>Victoria</PN>
+ <PN>Mary</PN>
+ <Coord type="birth" y="1867" m="5" d="26" />
+ <Coord type="death" y="1953" m="3" d="24" />
+ <Link ID="20001" type="marry" y="1893" />
+ <Txt>Daughter of the Duke of Teck and Mary Adelaide (Fat Mary)</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20004" MId="20003" FId="20001">
+ <FN>Windsor</FN>
+ <PN>Edward VIII</PN>
+ <Coord type="birth" y="1894" m="6" d="23" />
+ <Coord type="death" y="1972" m="5" d="28" />
+ <Coord type="img">r4.jpg</Coord>
+ <Link ID="20005" type="marry" y="1937" m="6" d="3">Chateau de Cande, Monts, France</Link>
+ <Txt>Duke of Windsor</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20005">
+ <FN>Warfield</FN>
+ <PN>Bessiewallis</PN>
+ <Coord type="birth" y="1896" >America</Coord>
+ <Coord type="death" y="1986" m="4" d="24">Paris, France</Coord>
+ <Link ID="20004" type="marry" y="1937" m="6" d="3">Chateau de Cande, Monts, France</Link>
+ <Txt>Duke of Windsor</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20006" MId="20003" FId="20001">
+ <FN>Windsor</FN>
+ <PN>George VI</PN>
+ <Coord type="birth" y="1895" m="12" d="14">York Cottage, Sandringham, Norfolk</Coord>
+ <Coord type="death" y="1952" m="2" d="6">Sandringham, Norfolk</Coord>
+ <Coord type="img">r6.jpg</Coord>
+ <Link ID="20007" type="marry" y="1923" />
+ <Txt>Duke of Windsor</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20007">
+ <FN>Bowes-Lyon</FN>
+ <PN>Elisabeth</PN>
+ <PN>Angela</PN>
+ <PN>Marguerite</PN>
+ <Coord type="birth" y="1900" m="8" d="4">London, England</Coord>
+ <Coord type="taufe" y="1900" m="9" d="23" />
+ <Coord type="img">r7.jpg</Coord>
+ <Link ID="20006" type="marry" y="1923" m="4" d="26" />
+ <Txt>The Queen Mother</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20008" MId="20003" FId="20001">
+ <FN>Windsor</FN>
+ <PN>Victoria</PN>
+ <PN>Alexandra</PN>
+ <PN>Alice</PN>
+ <PN>Mary</PN>
+ <Coord type="birth" y="1897" m="4" d="25">York Cottage, Sandringham, Norfolk, England </Coord>
+ <Coord type="death" y="1965" m="3" d="28">Harewood House, Leeds, Yorkshire, England</Coord>
+ <Txt>Countess of Harewood</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20009" MId="20003" FId="20001">
+ <FN>Windsor</FN>
+ <PN>Henry</PN>
+ <PN>William</PN>
+ <PN>Frederick</PN>
+ <PN>Albert</PN>
+ <Coord type="birth" y="1900" m="3" d="31">York Cottage, Sandringham, Norfolk</Coord>
+ <Coord type="death" y="1974" m="6" d="19">Barnwell Manor, Northampton</Coord>
+ <Txt>Duke of Gloucester 1928</Txt>
+ <Txt>marryed Lady Alice Montagu Douglas Scott</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20010" MId="20003" FId="20001">
+ <FN>Windsor</FN>
+ <PN>George</PN>
+ <PN>Edward</PN>
+ <PN>Alexander</PN>
+ <Coord type="birth" y="1902" m="12" d="20">York Cottage, Sandringham, Norfolk</Coord>
+ <Coord type="death" y="1942" m="8" d="25">Morven, Caithness, Scotland</Coord>
+ <Txt>Duke of Kent</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20011" MId="20003" FId="20001">
+ <FN>Windsor</FN>
+ <PN>John</PN>
+ <PN>Charles</PN>
+ <PN>Francis</PN>
+ <Coord type="birth" y="1905" m="7" d="12">York Cottage, Sandringham, Norfolk</Coord>
+ <Coord type="death" y="1919" m="1" d="18">Wood Farm, Wolferton, Norfolk</Coord>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20012" MId="20007" FId="20006">
+ <FN>Windsor</FN>
+ <PN>Elizabeth II</PN>
+ <PN>Alexandra</PN>
+ <PN>Mary</PN>
+ <Coord type="birth" y="1926" m="4" d="21">17 Bruton Street, London</Coord>
+ <Coord type="img">r12.jpg</Coord>
+ <Link ID="20013" type="marry" y="1947" m="11" d="20">Westminster Abbey, London</Link>
+ <Txt>Queen of great Britain</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20013">
+ <FN>Mountbatten</FN>
+ <PN>Philip</PN>
+ <Coord type="birth" y="1921" m="6" d="10">Corfu</Coord>
+ <Coord type="img">r13.jpg</Coord>
+ <Link ID="20012" type="marry" y="1947" m="11" d="20">Westminster Abbey, London</Link>
+ <Txt>Duke of Edinburgh</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20014" MId="20007" FId="20006">
+ <FN>Windsor</FN>
+ <PN>Margareth</PN>
+ <PN>Rose</PN>
+ <Coord type="birth" y="1930" m="8" d="21">Glamis Castle, Angus, Scotland</Coord>
+ <Coord type="death" y="2002" m="2" d="9">King Edward VII Hospital, London</Coord>
+ <Coord type="img">r14.jpg</Coord>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20015" MId="20012" FId="20013">
+ <FN>Windsor</FN>
+ <PN>Charles</PN>
+ <PN>Philip</PN>
+ <PN>Arthur</PN>
+ <PN>George</PN>
+ <Coord type="birth" y="1948" m="11" d="14">Buckingham Palace, London</Coord>
+ <Coord type="img">r15.jpg</Coord>
+ <Link ID="20019" type="marry" y="1981" m="7" d="29" />
+ <Link ID="20019" type="trenn" />
+ <Txt>Prince of Wales</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20016" MId="20012" FId="20013">
+ <FN>Windsor</FN>
+ <PN>Anne</PN>
+ <PN>Elizabeth</PN>
+ <PN>Alice</PN>
+ <PN>Louise</PN>
+ <Coord type="birth" y="1950" m="8" d="15">Clarence House, London</Coord>
+ <Coord type="img">r16.jpg</Coord>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20017" MId="20012" FId="20013">
+ <FN>Windsor</FN>
+ <PN>Andrew</PN>
+ <PN>Albert</PN>
+ <PN>Christian</PN>
+ <PN>Edward</PN>
+ <Coord type="birth" y="1960" m="2" d="19">Buckingham Palace, London</Coord>
+ <Coord type="img">r17.jpg</Coord>
+ <Txt>Duke of York</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20018" MId="20012" FId="20013">
+ <FN>Windsor</FN>
+ <PN>Edward</PN>
+ <PN>Anthony</PN>
+ <PN>Richard</PN>
+ <Coord type="birth" y="1964" m="3" d="10">Buckingham Palace, London</Coord>
+ <Coord type="img">r18.jpg</Coord>
+ <Txt>Earl of Wessex</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20019">
+ <FN>Spencer</FN>
+ <PN>Diana</PN>
+ <PN>Frances</PN>
+ <Coord type="birth" y="1961" m="7" d="1">Park House, Sandringham, Norfolk</Coord>
+ <Coord type="death" y="1997" m="8" d="31">Paris</Coord> 
+ <Coord type="img">r19.jpg</Coord>
+ <Link ID="20015" type="marry" y="1981" m="7" d="29">St.Paul's Cathedral, London</Link>
+ <Link ID="20015" type="trenn" />
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20020" MId="20019" FId="20015">
+ <FN>Windsor</FN>
+ <PN>William</PN>
+ <PN>Arthur</PN>
+ <PN>Philip</PN>
+ <PN>Louis</PN>
+ <Coord type="birth" y="1982" m="6" d="21">St.Mary's Hospital, London</Coord>
+ <Coord type="img">r20.jpg</Coord>
+ <Txt>Prince William</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="m" ID="20021" MId="20019" FId="20015">
+ <FN>Windsor</FN>
+ <PN>Henry</PN>
+ <PN>Charles</PN>
+ <PN>Albert</PN>
+ <PN>David</PN>
+ <Coord type="birth" y="1984" m="9" d="15">St.Mary's Hospital, London</Coord>
+ <Coord type="img">r21.jpg</Coord>
+ <Txt>Prince Harry</Txt>
+ <Src nr="">internet</Src>
+</P>
+
+<P Sx="w" ID="20022">
+ <FN>Hannover</FN>
+ <PN>Alexandrina</PN>
+ <PN>Victoria</PN>
+ <Coord type="birth" y="1819" m="5" d="24">Kensington Palace, London</Coord>
+ <Coord type="death" y="1901" m="1" d="22">Osborne House, Isle of Wight</Coord>
+ <Coord type="img">r22.jpg</Coord>
+ <Src nr="">internet</Src>
+</P>
+
+</STAMMBAUM>
+
+
+<!-- Template 
+
+<P Sx="w|m" ID="" MId="" FId="">
+ <FN></FN>
+ <PN></PN>
+ <Coord type="birth" y="" m="" d=""></Coord>
+ <Coord type="taufe" y="" m="" d=""></Coord>
+ <Coord type="death" y="" m="" d=""></Coord>
+ <Coord type="addr"></Coord>
+ <Coord type="cite"></Coord>
+ <Coord type="prof"></Coord>
+ <Coord type="img"></Coord>
+ <Link ID="" type="marry" y="" m="" d=""></Link>
+ <Link ID="" type="smother" y="" m="" d=""></Link>
+ <Link ID="" type="sfather" y="" m="" d=""></Link>
+ <Txt></Txt>
+ <Src nr="">internet</Src>
+</P>
+
+-->
+
+
+
