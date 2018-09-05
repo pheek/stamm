@@ -78,6 +78,7 @@ CREATE TABLE `_LOGIN_` (
 ,`SALT`         VARCHAR(  6) NOT NULL                           COMMENT 'Wird am Ende des Passwortes (vor dem Hash-Prozess) angefügt und ist für jedes Passwort individuell. Pepper wird am Anfang des Passwortes angefügt.'
 ,`sha512`       VARCHAR(128) NOT NULL                           COMMENT 'Hex representation of SHA512 (Gehasht wird der zusammengesetzte String: [PEPPER][Passwolt][SALT])'
 ,`registerTS`   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Registrierungszeitpunkt'
+,`validUntil`   DATETIME     DEFAULT NULL COMMENT 'Bis wann ist das Login gültig. NULL = unbegrenzt.'
 ) COMMENT 'Welche Loginnamen existieren. Diese sind nur "lose" mit den Personen verknüfpt. Es kann Personen geben, welche kein Login aufweisen und es kann Personen geben, welche mehrere login-Rollen haben. Daher ist hier einzig der Login-Name relevant';
 
 
@@ -180,9 +181,9 @@ VALUES
 -- Returns the name of the SCHEMA, if correctly storede in the table
 -- _PROGRAM_PARAMETER under the variable "DB_SCHEMA_NAME_GLOBAL"
 --
-DROP FUNCTION  IF EXISTS getSchemaName;
+DROP FUNCTION  IF EXISTS SP_getSchemaName;
 DELIMITER //
-CREATE FUNCTION getSchemaName()
+CREATE FUNCTION SP_getSchemaName()
 RETURNS VARCHAR(50)
 BEGIN
 	SET @schemaName = "";
@@ -202,9 +203,9 @@ DELIMITER ;
 --         Not Loged in: Liefert "-1"
 -- Bem.: Das "IF NOT EXISTS" wurde erst in MariaDB 10.1.3 hinzugefügt.
 -- SELECT getLoginID_OrNegative("max.muster", "ppeepppppeerr", "password")
-DROP FUNCTION IF EXISTS getLoginID_OrNegative;
+DROP FUNCTION IF EXISTS SP_getLoginID_OrNegative;
 DELIMITER //
-CREATE FUNCTION getLoginID_OrNegative
+CREATE FUNCTION SP_getLoginID_OrNegative
 ( _loginName      TEXT
 , _rawPassword    TEXT
 , _pepper         TEXT
@@ -258,10 +259,10 @@ DELIMITER ;
 
 -- phi@gress.ly 2018-07-18
 -- gets the ID of a tablename from _SCHEMA_TABLE_NAME_.
-DROP FUNCTION IF EXISTS `getSchemaTableNameID`;
+DROP FUNCTION IF EXISTS `SP_getSchemaTableNameID`;
 DELIMITER //
 
-CREATE FUNCTION getSchemaTableNameID
+CREATE FUNCTION SP_getSchemaTableNameID
 ( _tableName   varchar(50)
 )
 RETURNS INTEGER
@@ -277,10 +278,10 @@ DELIMITER ;
 
 -- --------------------------------------------------------
 
-DROP PROCEDURE IF EXISTS `insert_LOG_SQL_TABLE`;
+DROP PROCEDURE IF EXISTS `SP_insert_LOG_SQL_TABLE`;
 DELIMITER //
 
-CREATE PROCEDURE insert_LOG_SQL_TABLE
+CREATE PROCEDURE SP_insert_LOG_SQL_TABLE
 ( _tableName   varchar(50)
 , _ModifyType  char(1)
 )
@@ -291,4 +292,3 @@ BEGIN
 END; //
 
 DELIMITER ;
-
