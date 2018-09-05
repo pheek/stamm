@@ -1,0 +1,19 @@
+/**
+ * Author: Philipp Gressly Freimann
+ * Date  : 24. Apr. 2013
+ *
+ * Add any style you like to this css.
+ */
+
+h1 { 
+	color: blue;
+}
+
+* {
+	background-color: silver;
+}
+
+td, a {
+		text-decoration: none;
+		background-color:#ccc;
+}

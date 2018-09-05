@@ -1,0 +1,13 @@
+table.analyse-tabelle  {
+	background-color: black;
+}
+.analyse-tabelle td {
+	background-color: #bbc;
+	padding         :  2px;	
+}
+
+.analyse-tabelle tr:first-child td{
+	background-color: #ccd  ;
+	font-weight     : bold  ;
+	font-style      : italic;
+}

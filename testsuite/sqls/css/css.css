@@ -1,0 +1,12 @@
+tr {
+		vertical-align: top;
+}
+td {
+		vertical-align: top;
+}
+table, tr {
+		background-color: #444;
+}
+td {
+		background-color: #ccc;
+}
