@@ -9,29 +9,43 @@ SET CHARACTER SET 'utf8';
 
 
 CREATE TABLE IF NOT EXISTS `EreignisTyp` (
-  `ID` INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
+  `ID` INTEGER /* PRIMARY */ KEY
 , `Beschreibung` TEXT NOT NULL
 );
 
 -- Stammdaten
 
-INSERT INTO `EreignisTyp` (`ID`, `Beschreibung`) VALUES
-(1, 'Geburt'      ),
-(2, 'Gestorben'   ),
-(3, 'Getauft'     ),
-(4, 'Gefallen'    ),
-(5, 'Heirat'      ),
-(6, 'Scheidung'   ),
-(7, 'Trennung'    ),
-(8, 'Verschollen' ),
-(9, 'Konkubinat'  );
+INSERT INTO `EreignisTyp`
+(`ID`, `Beschreibung`) VALUES
+(   1, 'Geburt'      ),
+(   2, 'Gestorben'   ),
+(   3, 'Getauft'     ),
+(   4, 'Gefallen'    ),
+(   5, 'Verschollen' );
 
+
+
+CREATE TABLE `BeziehungsTyp` (
+  `ID`             INTEGER /* PRIMARY */ KEY
+, `TypBezeichnung` Text
+) COMMENT 'Beziehungen wie verheiratet, Adotpiert, Pate, ...)';
+
+-- Stammdaten
+INSERT INTO `BeziehungsTyp`
+(`ID`, `TypBezeichnung`) VALUES
+(   1, 'Verheiratet'),
+(   2, 'Geschieden' ),
+(   3, 'Konkubinat' ),
+(   4, 'Getrennt'   ),
+(   5, 'Adoptiert'  ),
+(   6, 'Pate/Patin' );
 -- --------------------------------------------------------
 
 CREATE TABLE `Ort` (
   `ID` INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
 , `Name`       TEXT NOT NULL
 );
+
 
 -- --------------------------------------------------------
 
@@ -128,24 +142,24 @@ CREATE TABLE `EinpersonenEreignis` (
 , `Teildatum_fk`   INTEGER
 , `Ort_fk`         INTEGER
 , `Bemerkung`      TEXT
-, FOREIGN KEY (`EreignisTyp_fk`) REFERENCES `Ereignis`  (`ID`)
-, FOREIGN KEY (`Person_fk`     ) REFERENCES `Person`    (`ID`)
-, FOREIGN KEY (`Teildatum_fk`  ) REFERENCES `Teildatum` (`ID`)
-, FOREIGN KEY (`Ort_fk`        ) REFERENCES `Ort`       (`ID`)
+, FOREIGN KEY (`EreignisTyp_fk`) REFERENCES `EreignisTyp` (`ID`)
+, FOREIGN KEY (`Person_fk`     ) REFERENCES `Person`      (`ID`)
+, FOREIGN KEY (`Teildatum_fk`  ) REFERENCES `Teildatum`   (`ID`)
+, FOREIGN KEY (`Ort_fk`        ) REFERENCES `Ort`         (`ID`)
 ) COMMENT 'Ein Ereignis, das eine einzelne Person zu einem bestimmten Datum haben kann. Beispiel Geburt';
 
 
 CREATE TABLE `BeziehungsEreignis` (
-  `ID`             INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
-, `EreignisTyp_fk` INTEGER NOT NULL
-, `Person1_fk`     INTEGER NOT NULL
-, `Person2_fk`     INTEGER NOT NULL
-, `Teildatum_fk`   INTEGER           COMMENT 'Zeitpunkt oder Startzeitpunkt'
-, `Ort_fk`         INTEGER
-, `Bemerkung`      TEXT
-, FOREIGN KEY (`EreignisTyp_fk`) REFERENCES `Ereignis`  (`ID`)
-, FOREIGN KEY (`Person1_fk`    ) REFERENCES `Person`    (`ID`)
-, FOREIGN KEY (`Person2_fk`    ) REFERENCES `Person`    (`ID`)
-, FOREIGN KEY (`Teildatum_fk`  ) REFERENCES `Teildatum` (`ID`)
-, FOREIGN KEY (`Ort_fk`        ) REFERENCES `Ort`       (`ID`)
+  `ID`               INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
+, `BeziehungsTyp_fk` INTEGER NOT NULL
+, `Person1_fk`       INTEGER NOT NULL
+, `Person2_fk`       INTEGER NOT NULL
+, `Teildatum_fk`     INTEGER           COMMENT 'Zeitpunkt oder Startzeitpunkt'
+, `Ort_fk`           INTEGER
+, `Bemerkung`        TEXT
+, FOREIGN KEY (`BeziehungsTyp_fk`) REFERENCES `BeziehungsTyp` (`ID`)
+, FOREIGN KEY (`Person1_fk`      ) REFERENCES `Person`        (`ID`)
+, FOREIGN KEY (`Person2_fk`      ) REFERENCES `Person`        (`ID`)
+, FOREIGN KEY (`Teildatum_fk`    ) REFERENCES `Teildatum`     (`ID`)
+, FOREIGN KEY (`Ort_fk`          ) REFERENCES `Ort`           (`ID`)
 ) COMMENT 'Ein Ereignis, das zwei Personen miteinander verbindet: Heirat, Scheidung, Konkubinat, ...';
