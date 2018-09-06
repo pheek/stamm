@@ -33,12 +33,33 @@ CREATE TABLE `BeziehungsTyp` (
 -- Stammdaten
 INSERT INTO `BeziehungsTyp`
 (`ID`, `TypBezeichnung`) VALUES
-(   1, 'Verheiratet'),
-(   2, 'Geschieden' ),
-(   3, 'Konkubinat' ),
-(   4, 'Getrennt'   ),
-(   5, 'Adoptiert'  ),
-(   6, 'Pate/Patin' );
+(   1, 'Verheiratet'     ),
+(   2, 'Geschieden'      ),
+(   3, 'Konkubinat'      ),
+(   4, 'Getrennt'        ),
+(   5, 'Adoptiert'       ),
+(   6, 'Pate/Patin'      );
+
+CREATE TABLE `SippenTyp` (
+  `ID` INTEGER KEY
+, `TypBezeichnug` TEXT
+) COMMENT 'Familie, ...';
+
+INSERT INTO `SippenTyp`
+(`ID`, `TypBezeichnug`   ) VALUES
+(   1, 'Familie'         ),
+(   2, '3er Kiste'       ),
+(   3, 'Waisenhausgruppe');
+
+CREATE TABLE Sippe (
+  `ID` INTEGER KEY AUTO_INCREMENT
+, `SippenTyp_fk` INTEGER NOT NULL
+, `SippenNummer` INTEGER NOT NULL
+, `AbDatum`      DATE
+, FOREIGN KEY (`SippenTyp_fk`) REFERENCES `SippenTyp` (`ID`)
+) COMMENT 'Sippen werden mit Personen über die Tabelle "Sippenzugehörigkeit" verbunden.';
+
+
 -- --------------------------------------------------------
 
 CREATE TABLE `Ort` (
@@ -71,6 +92,16 @@ CREATE TABLE `Person` (
 );
 
 -- COMMENT 'Eine Person ist einfach mal da. Namen, Geburtstadten, Eltern ..., sind Glücksache...';
+
+
+
+CREATE TABLE `Sippenzugehoerigkeit` (
+  `ID` INTEGER KEY AUTO_INCREMENT
+, `Person_fk` INTEGER NOT NULL
+, `Sippe_fk`  INTEGER NOT NULL
+, FOREIGN KEY (`Person_fk`) REFERENCES `Person` (`ID`)
+, FOREIGN KEY (`Sippe_fk` ) REFERENCES `Sippe`  (`ID`)
+) COMMENT 'Familien, 3er Kisten, Wohngruppen, ...';
 
 
 CREATE TABLE `Mutter` (
