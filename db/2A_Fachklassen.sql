@@ -16,7 +16,7 @@ SET CHARACTER SET 'utf8';
 
 
 CREATE TABLE `Person` (
-  `ID`         INTEGER /*PRIMARY*/ KEY
+  `ID`         INTEGER /*PRIMARY*/ KEY AUTO_INCREMENT
 , `Geschlecht` ENUM ('w', 'm', 'x', '?') -- '?' Unbekannt, 'x' weder noch.
 ) COMMENT 'Eine Person ist einfach mal da und hat sicher ein Geschlecht.
            Das Geschlecht kann meist über Kind-Beziehungen erschlossen werden.
@@ -107,6 +107,12 @@ CREATE TABLE `Teildatum` (
 
 -- -------------------------------------------------------
 
+
+CREATE TABLE `Ort` (
+  `ID` INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
+, `Name`       TEXT NOT NULL
+);
+
 -- --------------------------------------------------------
 -- Ereignisse werden in drei Kategorien eingeteilt:
 -- * Ereignis  = Eine    Person.  (z. B. Geburt, ...)
@@ -156,7 +162,6 @@ INSERT INTO `BeziehungsTyp`
 (   6, 'Pate/Patin'      );
 
 
-
 CREATE TABLE `BeziehungsEreignis` (
   `ID`               INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
 , `BeziehungsTyp_fk` INTEGER NOT NULL
@@ -173,7 +178,7 @@ CREATE TABLE `BeziehungsEreignis` (
 ) COMMENT 'Ein Ereignis, das zwei Personen miteinander verbindet: Heirat, Scheidung, Konkubinat, ...';
 
 -- ---------------------------------------------------
-CREATE TABLE `SippenTyp` (
+CREATE TABLE `GruppenTyp` (
   `ID` INTEGER KEY
 , `TypBezeichnug` TEXT
 ) COMMENT 'Familie, ...';
@@ -186,39 +191,31 @@ INSERT INTO `GruppenTyp`
 (   4, '3er Kiste'       ),
 (   5, 'Waisenhausgruppe');
 
-
-CREATE TABLE Sippe (
-  `ID` INTEGER KEY AUTO_INCREMENT
-, `SippenTyp_fk` INTEGER NOT NULL
-, `SippenNummer` INTEGER NOT NULL
-, `AbDatum`      DATE
-, FOREIGN KEY (`SippenTyp_fk`) REFERENCES `SippenTyp` (`ID`)
+CREATE TABLE Gruppe (
+  `ID`            INTEGER KEY AUTO_INCREMENT
+, `GruppenTyp_fk` INTEGER NOT NULL
+, `AbDatum`       DATE
+, FOREIGN KEY (`GruppenTyp_fk`) REFERENCES `GruppenTyp` (`ID`)
 ) COMMENT 'Sippen werden mit Personen über die Tabelle "Sippenzugehörigkeit" verbunden.';
 
-CREATE TABLE `Sippenzugehoerigkeit` (
-  `ID` INTEGER KEY AUTO_INCREMENT
+CREATE TABLE `Gruppenzugehoerigkeit` (
+  `ID`        INTEGER KEY AUTO_INCREMENT
 , `Person_fk` INTEGER NOT NULL
-, `Sippe_fk`  INTEGER NOT NULL
+, `Gruppe_fk` INTEGER NOT NULL
 , FOREIGN KEY (`Person_fk`) REFERENCES `Person` (`ID`)
-, FOREIGN KEY (`Sippe_fk` ) REFERENCES `Sippe`  (`ID`)
+, FOREIGN KEY (`Gruppe_fk`) REFERENCES `Gruppe` (`ID`)
 ) COMMENT 'Familien, 3er Kisten, Wohngruppen, ...';
 
 -- ------------------------------------------------------------
 -- Weitere Kennzeichen wie Ort, Adresse, Bemerkungen, Quellenangabe
 --
 
-CREATE TABLE `Ort` (
-  `ID` INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
-, `Name`       TEXT NOT NULL
-);
-
-
 CREATE TABLE `Adresse` (
   `ID`          INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
 , `Ort_fk`      INTEGER
-, `Bezeichnung` TEXT NOT NULL -- Beispiel "Ludoweg 18"
-, `PLZ`         VARCHAR(15) -- Wird bei älteren Adressen NULL sein
-, FOREIGN KEY `Ort_fk` REFERENCES `Ort` (`ID`)
+, `Bezeichnung` TEXT        NOT NULL -- Beispiel "Ludoweg 18"
+, `PLZ`         VARCHAR(15)          -- Wird bei älteren Adressen NULL sein
+, FOREIGN KEY (`Ort_fk`) REFERENCES `Ort` (`ID`)
 );
 
 
@@ -246,12 +243,12 @@ INSERT INTO `KontaktTyp`
 
 
 CREATE TABLE `Kontaktangabe`(
-  `ID` INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
-, `Person_fk` INTEGER
-, `KontaktTyp_fk INTEGER
-, `Wert` TEXT
-, FOREIGN KEY `Person_fk`     REFERENCES `Person`     (`ID`)
-, FOREIGN KEY `KontkatTyp_fk` REFERENCES `KontaktTyp` (`ID`)
+  `ID`            INTEGER /* PRIMARY */ KEY AUTO_INCREMENT
+, `Person_fk`     INTEGER
+, `KontaktTyp_fk` INTEGER
+, `Wert`          TEXT
+, FOREIGN KEY (`Person_fk`)     REFERENCES `Person`     (`ID`)
+, FOREIGN KEY (`KontaktTyp_fk`) REFERENCES `KontaktTyp` (`ID`)
 );
 
 
@@ -267,6 +264,6 @@ CREATE TABLE `Quellenangabe` (
 , `Quelle_fk`  INTEGER
 , `Externe_ID` TEXT  -- evtl. varchar, aber erst mal Daten sammeln
 , `Bemerkung`  TEXT
-, FOREIGN KEY `Person_fk` REFERENCES `Person` (`ID`)
-, FOREIGN KEY `Quelle_fk` REFERENCES `Quelle` (`ID`)
+, FOREIGN KEY (`Person_fk`) REFERENCES `Person` (`ID`)
+, FOREIGN KEY (`Quelle_fk`) REFERENCES `Quelle` (`ID`)
 );
